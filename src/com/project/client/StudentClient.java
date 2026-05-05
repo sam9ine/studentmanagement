@@ -21,7 +21,7 @@ public class StudentClient extends JFrame {
         setLayout(new BorderLayout(10, 10));
         setLocationRelativeTo(null);
 
-        // --- TOP PANEL (Fixed Space with GridBagLayout) ---
+        // TOP PANEL
         JPanel topPanel = new JPanel(new GridBagLayout());
         topPanel.setBorder(new CompoundBorder(new EmptyBorder(10, 10, 10, 10), BorderFactory.createTitledBorder("Student Details")));
         GridBagConstraints gbc = new GridBagConstraints();
@@ -55,14 +55,14 @@ public class StudentClient extends JFrame {
 
         add(topPanel, BorderLayout.NORTH);
 
-        // --- CENTER PANEL (Table) ---
+        // CENTER PANEL
         String[] columns = {"ID", "Name", "Roll No", "Course"};
         tableModel = new DefaultTableModel(columns, 0);
         table = new JTable(tableModel);
         table.setRowHeight(25);
         add(new JScrollPane(table), BorderLayout.CENTER);
 
-        // --- BOTTOM PANEL (Buttons Fix) ---
+        // BOTTOM PANEL
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 25, 15));
         bottomPanel.setBorder(new EmptyBorder(0, 0, 35, 0)); // Bottom padding for visibility
 
