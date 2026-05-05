@@ -2,19 +2,20 @@ package com.project.dao;
 
 import com.project.db.DBconnection;
 import java.sql.*;
+import com.project.model.Student;
 
 public class StudentDao {
 
-    public String addStudent(String name,String course,String email) throws Exception {
+    public String addStudent(Student student) throws Exception {
 
         String Query= "INSERT INTO students(name,course,email) VALUES(?,?,?)";
 
         try(Connection connect =DBconnection.getConnection();
             PreparedStatement ps = connect.prepareStatement(Query)){
 
-            ps.setString(1,name);
-            ps.setString(2,course);
-            ps.setString(3,email);
+            ps.setString(1,student.getName());
+            ps.setString(2,student.getCourse());
+            ps.setString(3,student.getEmail());
 
             int rows=ps.executeUpdate();
 
