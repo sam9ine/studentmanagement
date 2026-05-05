@@ -6,7 +6,7 @@ import com.project.model.Student;
 
 public class StudentDao {
 
-    public String addStudent(Student student) throws Exception {
+    public String addStudent(Student student) {
         String Query = "INSERT INTO students(name, course, roll_no) VALUES(?,?,?)";
 
         try(Connection connect = DBconnection.getConnection();
@@ -23,7 +23,6 @@ public class StudentDao {
         }
     }
 
-
     public void getAllStudents() {
         String query = "SELECT * FROM students";
 
@@ -33,19 +32,16 @@ public class StudentDao {
 
             System.out.println("Student List");
             while (rs.next()) {
-
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String course = rs.getString("course");
-                String email = rs.getString("email");
+                String roll = rs.getString("roll_no");
 
-                System.out.println(id + " | " + name + " | " + course + " | " + email);
+                System.out.println(id + " | " + name + " | " + roll + " | " + course);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-
 }
