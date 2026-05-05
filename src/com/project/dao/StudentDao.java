@@ -7,27 +7,19 @@ import com.project.model.Student;
 public class StudentDao {
 
     public String addStudent(Student student) throws Exception {
+        String Query = "INSERT INTO students(name, course, roll_no) VALUES(?,?,?)";
 
-        String Query= "INSERT INTO students(name,course,email) VALUES(?,?,?)";
-
-        try(Connection connect =DBconnection.getConnection();
+        try(Connection connect = DBconnection.getConnection();
             PreparedStatement ps = connect.prepareStatement(Query)){
 
-            ps.setString(1,student.getName());
-            ps.setString(2,student.getCourse());
-            ps.setString(3,student.getEmail());
+            ps.setString(1, student.getName());
+            ps.setString(2, student.getCourse());
+            ps.setString(3, student.getRollNo());
 
-            int rows=ps.executeUpdate();
-
-            if(rows>0){
-                return "Success";
-            }
-            else{
-                return "Error";
-            }
-        }
-        catch(Exception e){
-            return "Exception: "+ e.getMessage();
+            int rows = ps.executeUpdate();
+            return (rows > 0) ? "Success" : "Error";
+        } catch(Exception e) {
+            return "Exception: " + e.getMessage();
         }
     }
 
